@@ -9,3 +9,16 @@ before_install:
 #  The test script should be configured to run only once
 script:
   - docker run -e CI=true nwachuku/docker-react npm run test
+
+# bucket_path is usually the same name as your app
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-741032980292"
+  bucket_path: "docker-react" 
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
