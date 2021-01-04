@@ -4,11 +4,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t nwachuku/docker-react-app -f Dockerfile.dev .
+  - docker build -t nwachuku/reactapp -f Dockerfile.dev .
 
 #  The test script should be configured to run only once
 script:
-  - docker run -e CI=true nwachuku/docker-react-app npm run test
+  - docker run -e CI=true nwachuku/reactapp npm run test
 
 # bucket_path is usually the same name as your app
 deploy:
@@ -20,5 +20,6 @@ deploy:
   bucket_path: "docker-react" 
   on:
     branch: master
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key: "$AWS_SECRET_KEY"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
