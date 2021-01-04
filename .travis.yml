@@ -8,7 +8,7 @@ before_install:
 
 #  The test script should be configured to run only once
 script:
-  - docker run nwachuku/docker-react npm run test -- --coverage
+  - docker run -e CI=true nwachuku/docker-react npm run test
 
 # bucket_path is usually the same name as your app
 deploy:
