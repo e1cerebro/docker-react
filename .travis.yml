@@ -4,11 +4,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t nwachuku/docker-react-app -f Dockerfile.dev .
+  - docker build -t nwachuku/react-app -f Dockerfile.dev .
 
 #  The test script should be configured to run only once
 script:
-  - docker run -e CI=true nwachuku/docker-react-app npm run test
+  - docker run -e CI=true nwachuku/react-app npm run test
 
 # bucket_path is usually the same name as your app
 deploy:
