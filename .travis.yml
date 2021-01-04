@@ -10,7 +10,8 @@ before_install:
 script:
   - docker run -e CI=true nwachuku/reactapp npm run test
 
-# bucket_path is usually the same name as your app
+# bucket_path is usually the same name as your app -
+# bucket_name - check the s3 config to find this information
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
